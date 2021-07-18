@@ -34,8 +34,12 @@ for container in containers:
     product_name = title_container[0].text
 
     # finds the shipping price in the html
-    shipping_container = container.findAll('li', {'class':'price-ship'})
-    shipping = shipping_container[0].text
+    shipping_container = container.findAll('li', {'class': 'price-ship'})
+    if shipping_container == "Free Shipping":
+        shipping = "Free Shipping"
+    else:
+        shipping = "Not free shipping"
+
 
     # prints the product name and shipping with price of shipping
     #print('brand: ' + brand)
@@ -47,5 +51,5 @@ for container in containers:
 
 # closes the write file
 f.close()
-# closes the cleint
+# closes the client
 uClient.close()
